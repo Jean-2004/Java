@@ -1,14 +1,16 @@
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.Scanner;
-import java.util.Arrays;  
 
 public class Criptografia {
 
     // Tabela de conversão
-    static final String[] tabelaConversao = new String[27];
+    static final Dictionary<String, Integer> tabelaConversao = new Hashtable<>();
     static {
-        tabelaConversao[0] = "*";
+        tabelaConversao.put("*", 0);
         for (char c = 'A'; c <= 'Z'; c++) {
-            tabelaConversao[c - 'A' + 1] = Character.toString(c);
+            /*tabelaConversao[c - 'A' + 1] = Character.toString(c);*/
+            tabelaConversao.put(Character.toString(c), c - 'A' + 1);
         }
     }
 
@@ -39,29 +41,7 @@ public class Criptografia {
     }
     
 
-    public static void main(String[] args) {
-        /*for (int i = 0; i < 27; i++ ) {
-            System.out.println(tabelaConversao[i]);
-        }*/
-        String palavra = lerPalavra();
-        String[][] matrizPalavra = criarMatrizPalavra(palavra);
-        System.out.println(Arrays.deepToString(matrizPalavra));
-
-        /*int[][] matrizCodificada = converterPalavra(matrizPalavra);
-        int[][] matrizCriptografada = criptografarPalavra(matrizCodificada);
-
-        // Exibindo matriz criptografada
-        System.out.println("Matriz Criptografada:");
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 2; j++) {
-                System.out.print(matrizCriptografada[i][j] + " ");
-            }
-            System.out.println();
-        }*/
-    }
-
-   
-
+    
     // Cria matriz de letras da palavra de entrada
     public static String[][] criarMatrizPalavra(String palavra) {
         String[][] matrizPalavra = new String[3][2];
@@ -79,8 +59,8 @@ public class Criptografia {
         int[][] matrizCodificada = new int[3][2];
         for (int j = 0; j < 2; j++) {
             for (int i = 0; i < 3; i++) {
-                char letra = matrizPalavra[i][j].charAt(0);
-                matrizCodificada[i][j] = tabelaConversao[letra - 'A'];
+                String letra = matrizPalavra[i][j];
+                matrizCodificada[i][j] = tabelaConversao.get(letra);
             }
         }
         return matrizCodificada;
