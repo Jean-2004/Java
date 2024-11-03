@@ -1,15 +1,14 @@
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Criptografia {
 
     // Tabela de conversão
-    static final Dictionary<String, Integer> tabelaConversao = new Hashtable<>();
+    static final Map<String, Integer> tabelaConversao = new HashMap<>();
     static {
         tabelaConversao.put("*", 0);
         for (char c = 'A'; c <= 'Z'; c++) {
-            /*tabelaConversao[c - 'A' + 1] = Character.toString(c);*/
             tabelaConversao.put(Character.toString(c), c - 'A' + 1);
         }
     }
@@ -20,7 +19,6 @@ public class Criptografia {
         {1, 1, 1},
         {0, 2, -1}
     };
-
 
      // Lê a palavra de entrada
     public static String lerPalavra() {
@@ -71,7 +69,6 @@ public class Criptografia {
         int[][] matrizCriptografada = new int[3][2];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 2; j++) {
-                matrizCriptografada[i][j] = 0;
                 for (int k = 0; k < 3; k++) {
                     matrizCriptografada[i][j] += matrizCriptografia[i][k] * matrizConvertida[k][j];
                 }
