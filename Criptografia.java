@@ -27,14 +27,12 @@ public class Criptografia {
         while (true) {
             System.out.print("Digite uma palavra de 6 letras: ");
             palavra = scanner.nextLine().toUpperCase();
-
             if (palavra.matches("[A-Z]{6}")) {
                 break;
             } else {
                 System.out.println("A palavra deve conter apenas 6 letras.");
             }
         }
-        scanner.close();
         return palavra;
     }
     
@@ -73,7 +71,17 @@ public class Criptografia {
                     matrizCriptografada[i][j] += matrizCriptografia[i][k] * matrizConvertida[k][j];
                 }
             }
+            System.out.println();
         }
+        return matrizCriptografada;
+    }
+
+    // Realiza todas as funções
+    public static int[][] criptografar(){
+        String palavra = lerPalavra(); 
+        String[][] matrizPalavra = criarMatrizPalavra(palavra);
+        int[][] matrizCodificada = converterPalavra(matrizPalavra);
+        int[][] matrizCriptografada = criptografarPalavra(matrizCodificada);
         return matrizCriptografada;
     }
 }

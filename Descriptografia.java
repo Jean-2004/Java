@@ -1,7 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
+
+//Começando a revelar os segredos
 public class Descriptografia {
 
     static final int[][] matrizDescriptografia = {
@@ -18,7 +21,23 @@ public class Descriptografia {
         }
     }
 
-    public static int[][] Descriptografar(int[][] matrizCriptografada) {
+    public static int[][] lerMatriz() {
+        int[][] matrizCriptografada = new int[3][2];
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite os elementos da matriz criptografada (3x2):");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print("Elemento [" + (i + 1) + "][" + (j + 1) + "]: ");
+                matrizCriptografada[i][j] = scanner.nextInt();
+                scanner.nextLine();
+            }
+        }
+        return matrizCriptografada;
+    }
+
+   
+   //Descriptografia
+    public static int[][] descriptografarMatriz(int[][] matrizCriptografada) {
         int[][] matrizDescriptografada = new int[3][2];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 2; j++) {
@@ -30,6 +49,7 @@ public class Descriptografia {
         return matrizDescriptografada;
     }
 
+    //Decodificando a Matriz
     public static String decodificarMatriz(int[][] matrizDescriptografada) {
         StringBuilder palavra = new StringBuilder();
 
@@ -44,6 +64,14 @@ public class Descriptografia {
             }
         }
         return palavra.toString();
+    }
+
+
+    public static String descriptografar() {
+        int[][] matrizCriptografada = lerMatriz();
+        int[][] matrizDescriptografada = Descriptografia.descriptografarMatriz(matrizCriptografada);
+        String Palavra = Descriptografia.decodificarMatriz(matrizDescriptografada);
+        return Palavra;
     }
 
 /*public class CriptografiaDescriptografia {
