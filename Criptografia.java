@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Criptografia {
 
     // Tabela de conversão com a letra como chave e a número como valor
-    static final Map<String, Integer> tabelaConversao = new HashMap<>();
+    private static final Map<String, Integer> tabelaConversao = new HashMap<>();
     static {
         tabelaConversao.put("*", 0);
         for (char c = 'A'; c <= 'Z'; c++) {
@@ -14,7 +14,7 @@ public class Criptografia {
     }
 
     // Matriz de criptografia
-    static final int[][] matrizCriptografia = {
+    private static final int[][] matrizCriptografia = {
         {1, 0, 1},
         {1, 1, 1},
         {0, 2, -1}

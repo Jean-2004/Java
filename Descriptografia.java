@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class Descriptografia {
     // Matriz inversa de descriptografia
-    static final int[][] matrizDescriptografia = {
+    private static final int[][] matrizDescriptografia = {
         {3, -2, 1},
         {-1, 1, 0},
         {-2, 2, -1}
     };
     // Tabela de conversão com o número como chave e a letra como valor
-    static final Map<Integer, String> tabelaConversaoInvertida = new HashMap<>();
+    private static final Map<Integer, String> tabelaConversaoInvertida = new HashMap<>();
     static {
         tabelaConversaoInvertida.put(0, "*");
         for (char c = 'A'; c <= 'Z'; c++) {
@@ -33,7 +33,7 @@ public class Descriptografia {
         }
         return matrizCriptografada;
     }
-
+    
    
    // Descriptografa a matriz através de uma multiplicação de matrizes
     public static int[][] descriptografarMatriz(int[][] matrizCriptografada) {
