@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Criptografia {
 
-    // Tabela de conversão
+    // Tabela de conversão com a letra como chave e a número como valor
     static final Map<String, Integer> tabelaConversao = new HashMap<>();
     static {
         tabelaConversao.put("*", 0);
