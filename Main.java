@@ -38,6 +38,7 @@ public class Main {
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
+            System.out.println("Pressione Enter para prosseguir: ");
             scanner.nextLine();
         }
     }
